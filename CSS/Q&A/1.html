@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Running Game</title>
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+      font-family: sans-serif;
+      background-color: #f1f1f1;
+    }
+
+    .game {
+      width: 100%;
+      height: 100vh;
+      background: linear-gradient(to top, #87ceeb, #fff);
+      position: relative;
+    }
+
+    .player {
+      width: 50px;
+      height: 50px;
+      background: red;
+      position: absolute;
+      bottom: 0;
+      left: 100px;
+    }
+
+    .obstacle {
+      width: 50px;
+      height: 50px;
+      background: green;
+      position: absolute;
+      bottom: 0;
+      right: -50px;
+      animation: moveObstacle 2s linear infinite;
+    }
+
+    @keyframes moveObstacle {
+      0% {
+        right: -50px;
+      }
+      100% {
+        right: 100%;
+      }
+    }
+
+    .jump {
+      animation: jump 0.5s ease-out;
+    }
+
+    @keyframes jump {
+      0% { bottom: 0; }
+      50% { bottom: 120px; }
+      100% { bottom: 0; }
+    }
+
+    #message {
+      position: absolute;
+      top: 20px;
+      width: 100%;
+      text-align: center;
+      font-size: 24px;
+      font-weight: bold;
+      color: #333;
+    }
+
+    #restartBtn {
+      display: none;
+      padding: 10px 20px;
+      font-size: 18px;
+      position: absolute;
+      top: 70px;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: #ff4757;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    #restartBtn:hover {
+      background-color: #e84118;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="game" onclick="jump()">
+    <div id="message">🏃 Tap or press space to jump</div>
+    <button id="restartBtn" onclick="restartGame()">Restart</button>
+    <div class="player" id="player"></div>
+    <div class="obstacle" id="obstacle"></div>
+  </div>
+
+  <script>
+    const player = document.getElementById("player");
+    const obstacle = document.getElementById("obstacle");
+    const message = document.getElementById("message");
+    const restartBtn = document.getElementById("restartBtn");
+
+    function jump() {
+      if (!player.classList.contains("jump")) {
+        player.classList.add("jump");
+        setTimeout(() => {
+          player.classList.remove("jump");
+        }, 500);
+      }
+    }
+
+    document.addEventListener("keydown", function (e) {
+      if (e.code === "Space") {
+        jump();
+      }
+    });
+
+    let gameOver = false;
+
+    const checkCollision = setInterval(() => {
+      const playerTop = parseInt(window.getComputedStyle(player).getPropertyValue("bottom"));
+      const obstacleLeft = parseInt(window.getComputedStyle(obstacle).getPropertyValue("right"));
+
+      if (obstacleLeft > (window.innerWidth - 150) && obstacleLeft < (window.innerWidth - 100) && playerTop <= 50 && !gameOver) {
+        message.textContent = "💥 Game Over!";
+        restartBtn.style.display = "block";
+        obstacle.style.animation = "none";
+        gameOver = true;
+      }
+    }, 10);
+
+    function restartGame() {
+      gameOver = false;
+      obstacle.style.animation = "moveObstacle 2s linear infinite";
+      message.textContent = "🏃 Tap or press space to jump";
+      restartBtn.style.display = "none";
+    }
+  </script>
+
+</body>
+</html>

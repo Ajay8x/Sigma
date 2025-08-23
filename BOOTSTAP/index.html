@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bootstrap Button</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <!-- ✅ Navbar -->
+<nav class="navbar bg-body-tertiary fixed-top navbar-expand-lg">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Brand Name</a>
+
+    <!-- Corrected button -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+      aria-controls="navbarNavAltMarkup"  aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Navbar links -->
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <a class="nav-link" href="#">Home</a>
+        <a class="nav-link" href="#">Contact</a>
+        <a class="nav-link" href="#">About Us</a>
+      </div>
+    </div>
+  </div>
+</nav>
+  <!-- ✅ Spacing for fixed-top navbar -->
+  <div style="margin-top: 80px;">vvvvvvvv</div>
+
+  <div class="container">
+    <h1>Bootstrap Demo Buttons</h1>
+    <hr>
+    <button class="btn btn-outline-primary rounded-pill">Click Me</button>
+    <hr>
+    <button class="btn btn-outline-success rounded-pill">Click Me</button>
+    <hr>
+    <button class="btn btn-outline-danger rounded-pill">Click Me</button>
+    <hr>
+    <button class="btn btn-outline-info rounded-pill">Click Me</button>
+    <hr>
+
+    <p>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum reprehenderit ut corrupti sit ratione non quos
+      nam officiis, vel voluptate. Cupiditate assumenda natus praesentium repellat nesciunt consequuntur quibusdam
+      neque eveniet!
+      <span class="badge bg-success">Click Me</span>
+    </p>
+    <hr>
+  </div>
+
+  <div class="container">
+    <h1>Notification</h1>
+    <h3 class="bg-success p-2">Notifications <span class="badge bg-danger rounded-pill">100+</span></h3>
+    <hr>
+  </div>
+
+  <div class="container">
+    <h1>Alert</h1>
+    <div class="alert alert-danger">Download failed</div>
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+      WoW PASS
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    <hr>
+  </div>
+
+  <div class="container">
+    <div class="btn-group">
+      <button class="btn btn-outline-danger">Click Me</button>
+      <button class="btn btn-success">Click Me</button>
+      <button class="btn btn-outline-primary">Click Me</button>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>

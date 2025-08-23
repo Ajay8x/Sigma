@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>University Finder</title>
+</head>
+<body>
+  <input type="text" placeholder="Enter country name">
+  <button>Get Universities</button>
+  <ul id="list"></ul>
+
+  <!-- Axios CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+  <script>
+    let Url = "http://universities.hipolabs.com/search?name=";
+    let btn = document.querySelector("button");
+    let list = document.getElementById("list");
+
+    btn.addEventListener("click", async () => {
+      let country = document.querySelector("input").value;
+      let collegesArr = await getColleges(country);
+      show(collegesArr);
+    });
+
+    async function getColleges(country) {
+      try {
+        let res = await axios.get(Url + country);
+        return res.data;
+      } catch (e) {
+        console.log("error =", e);
+        return [];
+      }
+    }
+
+    function show(collegesArr) {
+      list.innerHTML = "";
+      if (!collegesArr.length) {
+        list.innerHTML = "<li>No colleges found</li>";
+        return;
+      }
+      for (let col of collegesArr) {
+        let li = document.createElement("li");
+        li.textContent = col.name;
+        list.appendChild(li);
+      }
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,125 @@
+* {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+/* element section */
+h1 {
+    color: teal;
+}
+
+h3 {
+    color: blueviolet;
+}
+
+
+/* id section */
+
+#login {
+    color: rgb(212, 21, 209);
+}
+
+#signup {
+    color: rgb(190, 83, 17);
+}
+
+/* class selection */
+.follow {
+    color: rgb(255, 0, 0);
+    background-color: rgba(235, 47, 47, 0.326);
+}
+
+.upvote {
+    background-color: burlywood;
+}
+
+/* Descendant Selector */
+
+nav ul li a {
+    color: rgb(14, 165, 6);
+}
+
+nav ul li {
+    color: rgb(45, 145, 195);
+}
+
+/* Adjacent sibling combinator*/
+
+p+h3 {
+    text-decoration: underline;
+}
+
+
+.upvote+button {
+    background-color: rgb(71, 101, 115);
+}
+
+/*  child selection */
+div>input {
+    background-color: rgb(157, 188, 157);
+}
+
+/* Attribute ::selection */
+
+input[type="password"] {
+    color: green;
+}
+
+input[type="text"] {
+    color: rgb(234, 15, 62);
+}
+
+
+/* pseudo class section */
+/* 
+:hover pseudo class section */
+
+button:hover {
+    background-color: black;
+    color: white;
+}
+
+h3:hover {
+
+    text-decoration: none;
+}
+
+/*:active pseudo class section */
+button:active {
+    background-color: blueviolet;
+}
+
+p:active {
+    font-weight: bolder;
+    color: green;
+}
+
+/*:radio pseudo class section */
+input[type="radio"]:checked+label {
+    color: red;
+    font-weight: bolder;
+}
+
+/*:nth of type (means odd & even selection ) pseudo class section */
+
+
+div:nth-of-type(2n) {
+    background-color: rgb(177, 233, 210);
+}
+
+
+
+/*  pseudo element */
+
+h1::first-letter {
+    color: red;
+}
+
+p::first-line {
+    /* not build for other line  */
+
+    color: green
+}
+
+p::selection{
+    background-color: aquamarine;
+}

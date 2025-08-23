@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        li {
+            background-color: antiquewhite;
+        }
+
+        div {
+            background-color: red;
+            width: 400px;
+            height: 200px;
+            border: 2px solid;
+        }
+
+        ul {
+            background-color: greenyellow;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <ul>
+            <li>one</li>
+            <li>two</li>
+            <li>three</li>
+        </ul>
+    </div>
+
+    <script>
+        let div = document.querySelector("div");
+        let ul = document.querySelector("ul");
+        let lis = document.querySelectorAll("li"); // ✅ All li elements
+
+        ul.addEventListener("click", function (event) {
+            event.stopPropagation();
+            console.log("ul was clicked");
+        });
+
+        div.addEventListener("click", function (event) {
+            event.stopPropagation();
+            console.log("div was clicked");
+        });
+
+        for (let li of lis) { // ✅ Loop through all li
+            li.addEventListener("click", function (event) {
+                event.stopPropagation();
+                console.log("li was clicked");
+            });
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,23 @@
+ body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 20px;
+    }
+    h1 {
+      color: #333;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    p {
+      color: #6e5353;
+      font-size: 18px;
+      margin: 20px;
+      border: 1px solid #ccc;
+      padding: 10px;
+      border-radius: 5px;
+    }
+    #output-Odd, #output-Even {
+      background-color: rgb(46, 52, 50);
+      color: chocolate;
+    }

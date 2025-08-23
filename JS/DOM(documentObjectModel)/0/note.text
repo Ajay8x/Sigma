@@ -1,0 +1,8 @@
+document.all[9]
+co
+
+document.all[9].innerText="peter Parker";
+
+
+
+how to getElementId 

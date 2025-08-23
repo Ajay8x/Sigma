@@ -1,0 +1,7 @@
+https://catfact.ninja/fact
+https://bored-api.appbrewery.com/random
+http://dog.ceo/api/breeds/image/random
+
+
+
+

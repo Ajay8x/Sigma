@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+//start a timer that prints "Hello world" every 2 seconds
+<script>
+   let id = setInterval(() => {
+        console.log("Hello world");
+    }, 1000 * 2);
+
+//stop the timer after 10 seconds
+setTimeout(() => {
+    clearInterval(id);
+    console.log("Timer stopped running");
+}, 1000*2 * 5);
+
+
+
+
+</script>
+</body>
+
+</html>

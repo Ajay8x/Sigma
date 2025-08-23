@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+
+
+<html lang="en">
+
+</html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let arr = [10, 22, 35, 47, 57];
+        let min = arr.reduce((min, el) => {
+            if (min < el) {
+                return min;
+            } else {
+                return el;
+            }
+        });
+        console.log("Minimum value in the array is:", min);
+    </script>
+</body>
+
+</html>

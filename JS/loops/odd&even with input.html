@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Odd and Even Numbers</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 20px;
+    }
+    h1 {
+      color: #333;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    p {
+      color: #6e5353;
+      font-size: 18px;
+      margin: 20px;
+      border: 1px solid #ccc;
+      padding: 10px;
+      border-radius: 5px;
+    }
+    #output-Odd, #output-Even {
+      background-color: rgb(46, 52, 50);
+      color: chocolate;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Odd Numbers</h1>
+  <p id="output-Odd"></p>
+
+  <h1>Even Numbers</h1>
+  <p id="output-Even"></p>
+
+  <script>
+    // Prompt user for a number
+    let n = prompt("❤️Enter a number: find Odd and even number👇👇👇👇👇👇", " ");
+
+    // Convert string input to number
+    n = parseInt(n);
+
+    for (let i = 1; i <= n; i++) {
+      if (i % 2 !== 0) {
+        document.getElementById("output-Odd").innerHTML += i + ", ";
+      } else {
+        document.getElementById("output-Even").innerHTML += i + ", ";
+      }
+    }
+  </script>
+
+</body>
+</html>

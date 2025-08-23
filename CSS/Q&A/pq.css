@@ -1,0 +1,24 @@
+#outer{
+    height: 200px;
+    width: 70px;
+    border: 2px solid black;
+}
+
+.inner{
+    height: 50px;
+    width: 50px;
+    border: 2px solid black;
+    margin: 10px;
+    border-radius: 50%;
+}
+
+#red{
+    background-color: red;
+}
+
+#yellow{
+    background-color: rgba(191, 255, 0, 0.839);
+}
+#green{
+    background-color: rgb(34, 109, 26);
+}

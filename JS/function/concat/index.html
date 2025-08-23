@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <script>
+        let str=["Ajay","Singh","Rathore"];
+        function concat() {
+            let result = " ";
+            for(let i=0;i<str.length;i++){
+                result=result.concat(" ",str[i]);
+            }
+            return result;
+        }
+        console.log(concat());
+    </script>
+</body>
+</html>

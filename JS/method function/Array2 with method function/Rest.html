@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+       function sum(...args) {
+        // Using rest parameter to collect all arguments into an array
+           for(let i = 0; i < args.length; i++) {
+               console.log("YOU GIVE US " + args[i]);
+           }
+       }
+
+
+
+       // Using rest parameter to collect all arguments into an array
+       sum(1, 2, 3, 4, 5);
+       sum(10, 20, 30);
+
+       // Using rest parameter with a function that calculates the minimum value
+
+//  Using the rest parameter to collect all arguments into an array
+
+
+// arguments me array nahi hota hai, but rest parameter me array hota hai
+// lekin ham rest parameter ko function ke andar use karte hai.
+       function min(msg, ...args) {
+           console.log(msg);
+           return args.reduce((min, el) => {
+               if (min < el) {
+                   return min;
+               } else {
+                   return el;
+               }
+           });
+       }
+    </script>
+</body>
+
+</html>

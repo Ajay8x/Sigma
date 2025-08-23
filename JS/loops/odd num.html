@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+
+        }
+        h1 { 
+
+            color: #333;
+            text-align: center;
+            margin-bottom: 20px;
+            
+        }
+        p {
+            color: #6e5353;
+            font-size: 18px;
+        }
+        
+         p {
+            margin: 20px;
+            border: 1px solid #ccc;
+        }
+        #output-Odd, #output-Even {
+            background-color: rgb(46, 52, 50);
+            color: chocolate;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        #output-Odd {
+            margin-bottom: 20px;
+        }
+        #output-Even {
+            margin-top: 20px;
+        }
+        #output {
+            background-color: rgb(46, 52, 50);
+            color: chocolate;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+
+
+        </style>
+
+    
+</head>
+<body>
+  <h1>Odd Numbers</h1>
+    <p id="output-Odd"></p>
+
+    
+      <h1> Even number</h1>
+    <p id="output-Even"></p>
+
+    <script>
+        let n = window.prompt(message, defaultText);
+      // Loop to display odd numbers from 1 to n
+      for (let i = 1; i <= n; i++) {
+        if (i % 2 !== 0) { // Check if the number is odd
+
+
+          document.getElementById("output-Odd").innerHTML += i + ", ";
+        }
+      }
+
+ // Loop to display odd numbers from 1 to n
+      for (let i = 1; i <= n; i++) {
+        if (i % 2 !== 0) { // Check if the number is odd
+
+// Display the odd number in the output paragraph
+          document.getElementById("output-Even").innerHTML +=" "+ i + ", ";
+        }
+      }
+
+
+
+    </script>
+</body>
+</html>

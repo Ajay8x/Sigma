@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>5s Delay Cursor Follow</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      overflow: hidden;
+      background-color: #eee;
+    }
+
+    .box {
+      width: 100px;
+      height: 100px;
+      background-color: rgb(24, 11, 205);
+      position: absolute;
+      top: 0;
+      left: 0;
+      border-radius: 15px;
+      transform: translate(-50%, -50%);
+      transition: background-color 0.3s;
+      pointer-events: none;
+    }
+
+    .box:hover {
+      background-color: blueviolet;
+    }
+  </style>
+</head>
+<body>
+
+<div class="box" id="box"></div>
+
+<script>
+  const box = document.getElementById('box');
+
+  let targetX = 0;
+  let targetY = 0;
+  let currentX = 0;
+  let currentY = 0;
+
+  document.addEventListener('mousemove', (e) => {
+    targetX = e.clientX;
+    targetY = e.clientY;
+  });
+
+  function animate() {
+    // Move a fraction toward the target (for smooth lagged effect)
+    currentX += (targetX - currentX) * 0.09; // Adjust 0.02 for more/less delay
+    currentY += (targetY - currentY) * 0.09;
+
+    box.style.transform = `translate(${currentX}px, ${currentY}px)`;
+
+    requestAnimationFrame(animate);
+  }
+
+  animate(); // Start animation loop
+</script>
+
+</body>
+</html>

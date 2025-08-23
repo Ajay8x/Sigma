@@ -1,0 +1,70 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mouse Enter Random Button Move</title>
+  <style>
+    body{
+        align-items: center;
+        align-content: center;
+        justify-content: center;
+        justify-items: center;
+    }
+    button{ color: aliceblue;
+        border: 2px solid black ; border-radius: 25px;
+    }
+
+    div{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+    }
+    input{
+        text-align: center;
+        color: black;
+    }
+  </style>
+</head>
+<body>
+  <h3 id="title">ENTER YOUR NAME AND SUBMIT</h3>
+  <input type="text" id="nameInput" placeholder="Enter your name">
+  <div style="width:100vw; height:80vh; border: 1px solid black; position: relative;">
+    <button id="btn">SUBMIT HERE</button>
+  </div>
+  <script>
+    let btn = document.getElementById("btn");
+    let title = document.getElementById("title");
+    let body = document.getElementsByTagName("div")[0]; // Directly access first div element
+
+    // Move button on mouseover and change colors
+    btn.addEventListener("mouseover", function() {
+      let container = btn.parentElement;
+      let containerWidth = container.clientWidth;
+      let containerHeight = container.clientHeight;
+      let randomX = Math.random() * (containerWidth - btn.offsetWidth);
+      let randomY = Math.random() * (containerHeight - btn.offsetHeight);
+      btn.style.position = "absolute";
+      btn.style.left = randomX + "px";
+      btn.style.top = randomY + "px";
+
+      let randomColor1 = getRandomColor(); // For heading
+      let randomColor2 = getRandomColor(); // For button background
+      let randomColor3 = getRandomColor(); // body background
+      title.style.color = randomColor1;
+      btn.style.backgroundColor = randomColor2;
+      body.style.backgroundColor = randomColor3;
+    });
+
+    // Random color generator
+    function getRandomColor() {
+      let red = Math.floor(Math.random() * 256);
+      let green = Math.floor(Math.random() * 256);
+      let blue = Math.floor(Math.random() * 256);
+      return `rgb(${red}, ${green}, ${blue})`;
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TO-DO APP</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f2f2f2;
+      text-align: center;
+      margin-top: 50px;
+    }
+    .container {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      width: 300px;
+      margin: auto;
+      box-shadow: 0px 4px 6px rgba(0,0,0,0.2);
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+    li {
+      margin: 8px 0;
+      padding: 8px;
+      background: #eee;
+      border-radius: 5px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    button {
+      cursor: pointer;
+      background: red;
+      color: white;
+      border: none;
+      padding: 5px 10px;
+      border-radius: 5px;
+    }
+    #addBtn {
+      background: green;
+      margin-left: 5px;
+    }
+    #msg {
+      margin-top: 15px;
+      color: darkgreen;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+<h5 id="msg"></h5>
+    <h1>TO-DO APP</h1>
+    
+    <input type="text" placeholder="Enter your task" id="taskInput">
+     <textarea rows="5" cols="40" placeholder="Enter your task"></textarea>
+    <button id="addBtn">ADD Task</button>
+
+    <ul id="taskList">
+      <li>Eat <button class="delete">X</button></li>
+      <li>Sleep <button class="delete">X</button></li>
+    </ul>
+
+  </div>
+<footer>©️ Ajay singh </footer>
+  <script>
+    let ul = document.getElementById("taskList");
+    let h5 = document.getElementById("msg");
+    let input = document.getElementById("taskInput");
+    let addBtn = document.getElementById("addBtn");
+
+    // ✅ Add new task
+    addBtn.addEventListener("click", function () {
+      let task = input.value.trim();
+      if (task === "") {
+        h5.innerText = "⚠️ Please enter a task!";
+        return;
+      }
+
+      // create li
+      let li = document.createElement("li");
+      li.innerHTML = `${task} <button class="delete">X</button>`;
+      ul.appendChild(li);
+
+      // clear input
+      input.value = "";
+
+      // success msg
+      h5.innerText = "✅ '" + task + "' added successfully!";
+      hideMsg();
+    });
+
+    //  Delete functionality using bubbling method
+    ul.addEventListener("click", function (event) {
+      if (event.target.nodeName === "BUTTON") {
+        let listItem = event.target.parentElement;
+        let deletedText = listItem.innerText.replace("X", "").trim();
+        listItem.remove();
+
+        h5.innerText = "❎🔴 '" + deletedText + "' successfully deleted!";
+        hideMsg();
+      }
+    });
+
+
+
+
+
+    // hide function
+    //Hide message after 3 sec
+    function hideMsg() {
+      setTimeout(() => {
+        h5.innerText = "";
+      }, 5000);
+    }
+  </script>
+</body>
+</html>

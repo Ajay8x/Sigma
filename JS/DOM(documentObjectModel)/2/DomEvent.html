@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- ⚠️ There is an invalid <link> tag here. It should be like: 
+         <link rel="stylesheet" href="style.css"> if you are using a CSS file -->
+</head>
+
+<body>
+    <h1>DOM Event Example</h1>
+
+    <!-- First button: triggers myFunction1() directly via inline onclick -->
+    <button id="btn" onclick="myFunction()">Click Me!</button>
+
+    <!-- Multiple buttons with the SAME ID "btns" (⚠️ Not valid HTML — IDs must be unique) -->
+    <button id="btns">Click Me!</button>
+    <button id="btns">Click Me!</button>
+    <button id="btns">Click Me!</button>
+
+<!-- mouseclick event -->
+  <button id="mouse">Click Me!</button>
+  <button id="mouse">Click Me!</button>
+  <button id="mouse">Click Me!</button>
+
+ 
+    <!-- External JS file (if exists) -->
+    <script src="app.js"></script>
+</body>
+
+</html>

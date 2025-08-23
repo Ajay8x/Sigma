@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cat Facts with Axios</title>
+</head>
+
+<body>
+
+    <h1>Get Random Cat Facts 🐱</h1>
+    <button>Click Me</button>
+
+    <p class="output"></p>
+    <p class="output"></p>
+    <p class="output"></p>
+    <p class="output"></p>
+    <p class="output"></p>
+    <p class="output"></p>
+    <p class="output"></p>
+    <p class="output"></p>
+    <p class="output"></p>
+    <p class="output"></p>
+    <p class="output"></p>
+    <p class="output"></p>
+
+    <!-- Load Axios first -->
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+    <script>
+        let url = "https://catfact.ninja/fact";
+      
+        let btn = document.querySelector("button");
+        let outputs = document.querySelectorAll(".output"); // NodeList of <p>
+
+
+        // fetch a single fact
+        async function getFact() {
+            try {
+                let { data } = await axios.get(url);
+                return data.fact;
+            } catch (e) {
+                console.log("Error =", e);
+                return "No fact found 😿";
+            }
+        }
+
+        // button click event
+        btn.addEventListener("click", async () => {
+            let count = 0;
+            for (let p of outputs) {   // ✅ using for...of loop
+                let fact = await getFact();
+                console.log(`Fact ${count} : ${fact}`);
+
+
+                p.innerText = fact;
+
+
+                //count
+                count++;
+            }
+        });
+    </script>
+
+</body>
+
+</html>

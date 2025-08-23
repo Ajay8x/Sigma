@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Destructuring Example</title>
+</head>
+<body>
+
+    <script>
+
+let numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+let [winner, runnerUp, kalu, re, e, eesw, sd, ed, eer, dee, ...rest] = numbers;
+
+console.log("All info:", numbers);
+
+
+
+
+        // Destructuring assignment with objects
+        const person = {
+            name: "John",
+            age: 30,
+            city: "New York"
+        };
+
+        const { name, age, city } = person;
+        console.log("all info:", person);
+
+        
+    </script>
+</body>
+</html>

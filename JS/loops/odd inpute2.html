@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Odd and Even Numbers with Count</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      padding: 20px;
+    }
+    h1 {
+      color: #333;
+      text-align: center;
+    }
+    p {
+      font-size: 18px;
+      color: #fff;
+      padding: 10px;
+      background-color: #2e3432;
+      border-radius: 5px;
+      margin: 20px;
+    }
+    .label {
+      color: chocolate;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Odd and Even Numbers</h1>
+
+  <p id="output-Odd"></p>
+  <p id="output-Even"></p>
+
+  <script>
+    let n = prompt("Enter a number:", "10");
+    n = parseInt(n);
+
+    let oddCount = 0;
+    let evenCount = 0;
+
+    let oddNumbers;
+    let evenNumbers;
+
+    for (let i = 1; i <= n; i++) {
+      if (i % 2 === 0) {
+      
+        evenCount++;
+      } 
+      else {
+      
+        oddCount++;
+      }
+    }
+
+    document.getElementById("output-Odd").innerHTML = 
+      `<span class="label">Odd Numbers (${oddCount}):</span><br>` + oddNumbers;
+
+    document.getElementById("output-Even").innerHTML = 
+      `<span class="label">Even Numbers (${evenCount}):</span><br>` + evenNumbers;
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+<SCRipt>
+    async function greet(){
+        // throw "some random error";
+        throw " 404 page not found"
+        return "helllo";
+
+        
+    }
+
+greet()
+.then(result=>{
+    console.log("promise was resolved");
+    console.log("result was ",result)
+})
+
+.catch(err =>  {
+    console.log(" promise was rejected with err",err);
+});
+
+</SCRipt>
+</body>
+
+</html>

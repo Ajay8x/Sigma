@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TO-DO APP</title>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background: linear-gradient(135deg, #74ebd5, #ACB6E5);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+    }
+
+    .container {
+        background: white;
+        padding: 30px;
+        border-radius: 12px;
+        box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15);
+        width: 350px;
+        text-align: center;
+    }
+
+    h1 {
+        margin-bottom: 20px;
+        color: #333;
+        font-size: 24px;
+    }
+
+    input {
+        width: 70%;
+        height: 70%;
+        padding: 10px;
+        border: 2px solid #ccc;
+        border-radius: 6px;
+        outline: none;
+        transition: all 0.3s ease;
+    }
+
+    input:focus {
+        border-color: #74b9ff;
+    }
+
+    button {
+        padding: 10px 15px;
+        margin-left: 10px;
+        border: none;
+        border-radius:10px;
+        background: #74b9ff;
+        color: white;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background 0.3s ease;
+    }
+
+    button:hover {
+        background: #0984e3;
+    }
+
+    ul {
+        list-style-type: none;
+        padding: 0;
+        margin-top: 20px;
+        text-align: left;
+    }
+
+    li {
+        background: #f9f9f9;
+        margin: 8px 0;
+        padding: 10px;
+        border-radius: 6px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    li button {
+        background: #ff7675;
+        border: none;
+        border-radius: 5px;
+        padding: 5px 10px;
+        font-size: 14px;
+        cursor: pointer;
+        font-weight: bold;
+    }
+
+    li button:hover {
+        background: #d63031;
+    }
+</style>
+
+</head>
+<body>
+  <div class="container">
+<h5 id="msg"></h5>
+    <h1>TO-DO APP</h1>
+    
+
+     <textarea rows="5" cols="40" placeholder="Enter your task"id="taskInput"></textarea>
+    <button id="addBtn">ADD Task</button>
+
+    <ul id="taskList">
+      <li>Eat <button class="delete">X</button></li>
+      <li>Sleep <button class="delete">X</button></li>
+    </ul>
+
+  </div>
+<footer>©️ Ajay singh </footer>
+  <script>
+    let ul = document.getElementById("taskList");
+    let h5 = document.getElementById("msg");
+    let input = document.getElementById("taskInput");
+    let addBtn = document.getElementById("addBtn");
+
+    // ✅ Add new task
+    addBtn.addEventListener("click", function () {
+      let task = input.value.trim();
+      if (task === "") {
+        h5.innerText = "⚠️😁 Please enter a task!";
+        return;
+      }
+
+      // create li
+      let li = document.createElement("li");
+      li.innerHTML = `${task} <button class="delete">X</button>`;
+      ul.appendChild(li);
+
+      // clear input
+      input.value = "";
+
+      // success msg
+      h5.innerText = "✅ '" + task + "' added successfully!";
+      hideMsg();
+    });
+
+    //  Delete functionality using bubbling method
+    ul.addEventListener("click", function (event) {
+      if (event.target.nodeName === "BUTTON") {
+        let listItem = event.target.parentElement;
+        let deletedText = listItem.innerText.replace("X", "").trim();
+        listItem.remove();
+
+        h5.innerText = "❎🔴 '" + deletedText + "' successfully deleted!";
+        hideMsg();
+      }
+    });
+
+
+
+
+
+    // hide function
+    //Hide message after 3 sec
+    function hideMsg() {
+      setTimeout(() => {
+        h5.innerText = "";
+      }, 5000);
+    }
+  </script>
+</body>
+</html>

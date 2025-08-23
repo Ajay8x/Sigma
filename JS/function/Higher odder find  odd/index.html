@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function oddOrEvenFactory(request){
+            if (request == "odd"){
+                return function(n){
+                console.log(!((n%2)==0));
+            }
+        }else if (request == "even"){
+            return function(n){
+                console.log(((n%2)==0));
+            }
+        }
+        else{
+            console.log("Invalid request");
+        }
+     }
+
+     let request = "odd";
+
+
+</script>
+
+</body>
+</html>

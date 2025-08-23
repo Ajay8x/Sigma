@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jokes Example</title>
+</head>
+<body>
+  <h1>😂 Random Joke</h1>
+  <button>Get Joke</button>
+  <p id="result"></p>
+
+  <!-- ✅ Load Axios BEFORE your script -->
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+  <script>
+    let btn = document.querySelector("button");
+    let url = "https://official-joke-api.appspot.com/random_joke";
+
+    btn.addEventListener("click", async () => {
+      let joke = await getJokes();
+      document.querySelector("#result").innerText = joke;
+    });
+
+    async function getJokes() {
+      try {
+        let res = await axios.get(url);
+        return res.data.setup + " 😂 " + res.data.punchline;
+      } catch (err) {
+        console.log("error =", err);
+        return "Failed to fetch joke!";
+      }
+    }
+  </script>
+</body>
+</html>

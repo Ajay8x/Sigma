@@ -1,0 +1,40 @@
+body{ text-align: center;}
+
+
+.btn-container{
+    display: flex;
+    justify-content: center;
+}
+
+
+.btn{
+    height: 200px;
+    width: 200px;
+    border-radius: 20%;
+    border: 7px solid black;
+    margin: 3rem;
+
+}
+
+.red{ background-color:#d95980;}
+.green{background-color:#63aac0 }
+.yellow{ background-color:#f99b45; }
+.blue{background-color: #819ff9; }
+
+.Flash{ background-color: white;
+
+}
+
+.userFlash{
+    background-color: greenyellow;
+}
+
+h1{
+    color: #1abaea;
+    font-size:50px;
+}
+
+h2{
+    color: #b24a27;
+    font-size:xx-large;
+}

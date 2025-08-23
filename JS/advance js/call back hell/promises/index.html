@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Callback Example</title>
+</head>
+
+<body>
+
+    <script>
+        function savetoDb(data, success, failure) {
+            let internetSpeed = Math.floor(Math.random() * 10) + 1;
+
+
+
+
+    // simulate delay (like saving to DB takes time)
+            setTimeout(() => {
+                if (internetSpeed > 4) {
+                    success(internetSpeed);
+                } else {
+                    failure(internetSpeed);
+                }
+            }, 1000); // delay of 1 second
+        }
+
+
+
+
+
+
+// a synchronous function    
+
+        savetoDb(
+            "Hello sir",
+            (speed1) => {
+                console.log("✅ success: your data was saved. Internet speed:", speed1);
+                savetoDb(
+                    "hello world",
+                    (speed2) => {
+                        console.log("✅ success2: data2 saved. Internet speed:", speed2);
+                        savetoDb(
+                            "hello sir 2",
+                            (speed3) => {
+                                console.log("✅ success3: data3 saved. Internet speed:", speed3);
+                            },
+                            (speed3) => {
+                                console.log("⚠️ failure3: weak connection. Internet speed:", speed3);
+                            }
+                        );
+                    },
+                    (speed2) => {
+                        console.log("⚠️ failure2: weak connection. Internet speed:", speed2);
+                    }
+                );
+            },
+            (speed1) => {
+                console.log("⚠️ failure: weak connection. Data not saved. Internet speed:", speed1);
+            }
+        );
+
+
+        //calling in delay
+
+        
+    </script>
+
+</body>
+
+</html>

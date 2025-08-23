@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+<script>
+
+
+ function savetoDb(data) {
+    return new Promise((resolve, reject) => {
+        console.log(`⏳ Saving "${data}" to the database...`);
+        let internetSpeed = Math.floor(Math.random() * 10); // 0 to 9
+        setTimeout(() => {
+            if (internetSpeed > 4) {
+                resolve(`✅ "${data}" saved successfully!`);
+            } else {
+                reject(`❌ Failed to save "${data}". Internet speed too low (${internetSpeed}).`);
+            }
+        }, 1000); // Simulate delay
+    });
+}
+
+// Chained calls with spinner simulation
+savetoDb("apna college")
+    .then((result) => {
+        console.log(result);
+        return savetoDb(" 2data structures");
+    })
+    .then((result) => {
+        console.log(result);
+        return savetoDb("3 algorithms");
+    })
+    .then((result) => {
+        console.log(result);
+    })
+    .catch((error) => {
+        console.error(error);
+    });
+</script>
+</body>
+
+</html>

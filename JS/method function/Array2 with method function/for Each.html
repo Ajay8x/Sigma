@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        //
+        let arr = [1, 2, 3, 4, 5];
+
+
+
+        arr.forEach(function (el) {
+            console.log(el);
+        });
+
+
+
+        // Using an arrow function with forEach
+
+        arr.forEach((el) => {
+            console.log(el);
+        });
+
+        // Defining a function to be used with forEach
+
+
+
+
+        let print = function (el) {
+            console.log(el);
+        };
+
+        // Using forEach to iterate over the array
+
+
+
+        //objects se array banake forEach use karna
+
+        let arr2 = [
+            { name: 'Alice', age: 25 },
+            { name: 'Bob', age: 30 },
+            { name: 'Charlie', age: 35 }]
+
+
+
+arr2.forEach((student) => {
+    console.log(student.age);
+});
+
+
+
+
+    </script>
+
+</body>
+
+</html>

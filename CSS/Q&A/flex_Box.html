@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flex box</title>
+  <style>
+    #box {
+      height: 500px;
+      width: 80%;
+      background-color: rgb(156, 219, 161);
+      margin: 10px auto;
+      border: 2px solid black;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+      align-items: center;
+    }
+
+    #box div {
+      height: 100px;
+      width: 100px;
+      color: rgb(255, 255, 255);
+      text-align: center;
+      font-size: 1.5em;
+      line-height: 100px;
+      background-color: rgb(255, 236, 236);
+      border: 1px solid rgb(0, 0, 0);
+      border-radius: 50%;
+    }
+  </style>
+</head>
+
+<body>
+  <h1 style="text-align: center;">Flex box</h1>
+
+  <div id="box">
+    <div style="background-color:#78B9B5;">1</div>
+    <div style="background-color: #0F828C;">2</div>
+    <div style="background-color: #065084;">3</div>
+    <div style="background-color:#320A6B;">4</div>
+    <div style="background-color: rgb(159, 77, 77);">5</div>
+    <div style="background-color: rgb(34, 65, 26);">6</div>
+    <div style="background-color: rgb(135, 192, 29);">7</div>
+    <div style="background-color: rgb(91, 42, 165);">8</div>
+    <div style="background-color: rgb(42, 165, 140);">9</div>
+  </div>
+</body>
+
+</html>

@@ -1,0 +1,29 @@
+
+
+/* universal selector */
+*{
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+
+/* element selector */
+h1{
+    color: rgb(23, 82, 193);
+}
+
+/* id selector */
+#search{
+   
+    background-color: rgb(167, 238, 185);
+}
+
+#searchbtn{
+    color: rgb(218, 40, 40);
+    background-color: rgb(8, 233, 64);
+}
+
+/* class selector */
+.userbtn{
+    color: brown;
+    background-color: rgb(181, 140, 140);
+}

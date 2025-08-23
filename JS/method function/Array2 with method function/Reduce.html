@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reduce Examples</title>
+</head>
+
+<body>
+
+    <script>
+        // Sum of array using reduce
+        let arr = [1, 2, 3, 4, 5];
+        arr.finalValue = arr.reduce((res, el) => {
+            return res + el;
+        });
+        console.log("Sum:", arr.finalValue);
+
+
+        
+        // Max value using reduce
+        let nums = [10, 20, 30, 40, 50];
+        let ressult = nums.reduce((max, el) => {
+            return el > max ? el : max;
+        });
+
+        console.log("Max:", ressult);
+    </script>
+
+</body>
+
+</html>

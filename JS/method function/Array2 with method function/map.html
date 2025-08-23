@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> use map</title>
+</head>
+<body>
+    <script>
+        // array map method
+    let arr = [1, 2, 3, 4, 5];
+
+
+    // Using map to create a new array with doubled values
+    let double = arr.map(function (el) {
+        return el * 2;
+    });
+
+    console.log(double);
+
+
+
+let students=[
+    { name: 'Abhay', marks: 25 },
+    { name: 'Ajay', marks: 30 },
+    { name: 'Ajay8x', marks: 35 }
+];
+
+let gpa = students.map((el) => {
+    return el.marks / 10;
+});
+    console.log(gpa);
+
+
+
+
+
+
+    </script>
+</body>
+</html>

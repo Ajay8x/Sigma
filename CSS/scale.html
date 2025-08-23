@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        *{
+            margin: auto 0;
+        }
+        section {
+            margin-top: 100px;
+            
+            
+        }
+
+        div {
+            width: 250px;
+            height: 50px;
+            text-align: center;
+            background-color: green;
+            margin: 15px;
+            
+        }
+
+        div:nth-of-type(2n) {
+            background-color: rgb(70, 4, 4);
+
+        }
+
+
+        div:nth-of-type(3n) {
+
+
+            background-color: rgb(149, 1, 1);
+
+        }
+
+
+        /* transform rotate */
+
+
+        #a:hover {
+            /* transform: rotate(90deg); */
+
+
+            /* dono me se ek hi kam karega */
+            transform: scale(1.5);
+        }
+
+
+
+        #b:hover {
+            /* 
+    transform: rotate(90deg); */
+
+
+            transform: scale(1.5);
+
+        }
+
+        #c:hover {
+            transform: rotate(60deg);
+        }
+
+
+
+        #d:hover {
+
+            /* transform to other angle */
+            transform: translate(100px, 100px);
+
+        }
+
+
+        #e:hover {
+            transform: rotate(60deg);
+            transform: skew(30deg);
+        }
+
+        #f:hover {
+
+            transform: rotate(30deg) translateX(200px);
+        }
+    </style>
+</head>
+
+<body>
+    <section>
+        <div id="a">1</div>
+        <div id="b">2</div>
+        <div id="c">3</div>
+        <div id="d">4</div>
+        <div id="e">5</div>
+        <div id="f">6</div>
+    </section>
+
+</body>
+
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Triple Animation</title>
+
+  <style>
+    .box {
+      height: 100px;
+      width: 300px;
+      background-color: blue;
+      color: white;
+      font-size: 20px;
+      text-align: center;
+      line-height: 100px;
+      animation: fontAnimation 3s ease-in infinite,
+                 colorAnimate 3s ease-in infinite,
+                 widthAnimate 3s ease-in infinite;
+    }
+
+    @keyframes fontAnimation {
+      from {
+        font-size: 20px;
+      }
+      to {
+        font-size: 40px;
+      }
+    }
+/* 
+    @keyframes colorAnimate {
+      from {
+        background-color: rgb(211, 142, 5);
+      }
+      to {
+        background-color: rgb(37, 255, 255);
+      }
+    } */
+
+    @keyframes widthAnimate {
+      from {
+        width: 10px;
+        background-color: green;
+      }
+      to {
+        width: 200px;
+        background-color: brown;
+      }
+    }
+  </style>
+</head>
+
+
+
+<body>
+  <h1>Animation</h1>
+  <div class="box">Mahadev</div>
+</body>
+</html>

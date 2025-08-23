@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+
+    </style>
+</head>
+
+<body>
+
+    <h1> Ajay singh</h1>
+
+
+
+    <script>
+
+        // h1 = document.querySelector("h1")
+        // setTimeout(() => {
+        //     h1.style.color = "red";
+        // }, 1000);
+
+        //    setTimeout(() => {
+        //     h1.style.color = "green";
+        // }, 2000);
+
+        //    setTimeout(() => {
+        //     h1.style.color = "yellow";
+        // }, 3000);
+
+        //    setTimeout(() => {
+        //     h1.style.color = "pink";
+        // }, 4000);
+
+
+
+
+        h1 = document.querySelector("h1");
+
+        function changeColor(color, delay, nextColorChange) {
+            setTimeout(() => {
+                h1.style.color = color;
+                if (nextColorChange) nextColorChange();
+            }, delay);
+        }
+
+        changeColor("red", 1000, () => {
+            changeColor("orange", 1000, () => {
+                changeColor("green", 1000, () => {
+                    changeColor("yellow", 1000, () => {
+                        changeColor("blue", 1000);
+                    });
+                });
+            });
+        });
+        //callbacks nesting   -> it is a  call back hell
+
+
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>
