@@ -1,0 +1,13 @@
+{
+  "name": "import",
+  "version": "1.0.0",
+  "description": "import export",
+  "license": "ISC",
+  "author": "Ajaysinggh",
+  "type": "commonjs",
+  "main": "math.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}

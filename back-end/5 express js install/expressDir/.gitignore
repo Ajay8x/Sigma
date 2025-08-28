@@ -1,0 +1,8 @@
+# node_modules folder ignore karo
+node_modules/
+
+# logs ignore karo
+*.log
+
+# environment variables
+.env
