@@ -1,35 +1,27 @@
-<!DOCTYPE html>
-<html lang="en">
+<%- include("includes/head.ejs"); %>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Username Instagram</title>
-</head>
-<style>
-    img{
-        width: 200px;
-height: 200px;
-    }
-</style>
+    <body>
+        <h1>This page belongs to <%= data.name %>
+        </h1>
+        <button>Follow</button>
+        <button>Message</button>
+        <h3> account Followers list folow you </h3>
+        <ul>
+            <p> Followers : <%= data.followers %>&nbsp; &nbsp; &nbsp; Following : <%= data.following %>
+            </p>
+            <hr />
 
-<body>
-    <h1>This page belongs to <%= data.name %>
-    </h1>
-    <button>Follow</button>
-    <button>Message</button>
-    <h3> account Followers list folow you </h3>
-    <ul>
-<p> Followers : <%= data.followers %>&nbsp; &nbsp; &nbsp; Following : <%= data.following %></p>
-<hr/>
-
-<%for( let post of data.posts){%>
-    <img src="<%=post.image%>" alt="some img">
-        <p> Likes : <%= post.likes %>&nbsp; &nbsp; &nbsp; Comments : <%= post.comments %></p>
+            <%for( let post of data.posts){%>
+                <img src="<%=post.image%>" alt="some img">
+                <p> Likes : <%= post.likes %>&nbsp; &nbsp; &nbsp; Comments : <%= post.comments %>
+                </p>
 
 
-<%}%>
+                <%}%>
 
-</body>
+                <%- include("includes/footer.ejs")%>
 
-</html>
+                    <script src="/app.js"></script>
+    </body>
+
+    </html>

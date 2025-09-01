@@ -3,12 +3,16 @@ const app = express();
 const Path = require('path');
 const port = 3000;
 
-
-
 app.listen(port, () => {
     console.log(`listening on port  ${port}`);
 });
 
+
+
+
+// // static files path set
+app.use(express.static(Path.join(__dirname, "/public/js")));
+app.use(express.static(Path.join(__dirname, "/public/css")));
 
 
 app.set('view engine', 'ejs');
