@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Delete User</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #fff5f5, #ffeaea);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+    }
+
+    .delete-container {
+      background: #fff;
+      padding: 30px 40px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      width: 380px;
+      text-align: center;
+    }
+
+    h3 {
+      font-size: 1.2rem;
+      color: #333;
+      margin-bottom: 20px;
+    }
+
+    input {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 1rem;
+      outline: none;
+      transition: 0.3s;
+    }
+
+    input:focus {
+      border-color: #ff4d4f;
+      box-shadow: 0 0 6px rgba(255, 77, 79, 0.4);
+    }
+
+    .btn-danger {
+      width: 100%;
+      background: #ff4d4f;
+      color: #fff;
+      border: none;
+      padding: 12px;
+      border-radius: 8px;
+      font-size: 1rem;
+      cursor: pointer;
+      margin-top: 10px;
+      transition: 0.3s;
+    }
+
+    .btn-danger:hover {
+      background: #d9363e;
+      transform: scale(1.05);
+    }
+
+    .btn-cancel {
+      display: inline-block;
+      margin-top: 15px;
+      font-size: 0.9rem;
+      color: #555;
+      text-decoration: none;
+    }
+
+    .btn-cancel:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="delete-container">
+    <h3>
+      To delete this user: <b><%= user.email %></b><br />
+      please enter the password
+    </h3>
+
+    <form method="POST" action="/user/<%= user.id %>?_method=DELETE">
+      <input 
+        type="password" 
+        name="password" 
+        placeholder="Enter password to confirm" 
+        required 
+      />
+      <button type="submit" class="btn-danger">Delete</button>
+    </form>
+
+    <a href="/user" class="btn-cancel">Cancel</a>
+  </div>
+</body>
+</html>
