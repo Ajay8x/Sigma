@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Chat</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #ece5dd;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .chat-form {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+            width: 350px;
+        }
+
+        h3 {
+            text-align: center;
+            color: #075e54;
+            margin-bottom: 10px;
+        }
+
+        p {
+            font-size: 14px;
+            color: #333;
+        }
+
+        input,
+        textarea,
+        button {
+            width: 100%;
+            margin: 8px 0;
+            padding: 10px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+            font-size: 14px;
+        }
+
+        textarea {
+            resize: none;
+            height: 80px;
+        }
+
+        button {
+            background-color: #25d366;
+            color: white;
+            border: none;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #1ebe57;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="chat-form">
+        <h3>Edit your chat (<%= chat._id %>)</h3>
+        <p>This chat was sent from <b><%= chat.from %></b> to <b><%= chat.to %></b></p>
+
+        <form method="POST" action="/chats/<%= chat._id %>?_method=PUT">
+            <input type="text" name="from" value="<%= chat.from %>" required />
+            <textarea name="msg" required><%= chat.msg %></textarea>
+            <input type="text" name="to" value="<%= chat.to %>" required />
+            <button type="submit">Update Chat</button>
+        </form>
+    </div>
+</body>
+
+</html>

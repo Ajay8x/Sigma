@@ -1,0 +1,9 @@
+let chat = new Chat({
+    from: "aj",
+    to: "max",
+    msg: "Hello, how are you?",
+    created_at: new Date()
+});
+
+chat.save().then((res) => 
+  console.log('Chat message saved to database:', res));

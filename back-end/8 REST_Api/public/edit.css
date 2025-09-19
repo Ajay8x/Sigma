@@ -1,0 +1,49 @@
+/* General Page */
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f7fc;
+    color: #333;
+    margin: 0;
+    padding: 20px;
+}
+
+/* Heading */
+h2 {
+    text-align: center;
+    color: #2c3e50;
+    margin-bottom: 25px;
+}
+
+/* Info Paragraph */
+p {
+    font-size: 1.1em;
+    color: #666;
+    text-align: center;
+}
+
+/* Post Container */
+.post {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    padding: 20px;
+    margin: 30px auto;
+    width: 90%;
+    max-width: 600px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+}
+
+/* Username */
+.post .user {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #2c3e50;
+    margin-bottom: 10px;
+}
+
+/* Content */
+.post .content {
+    font-size: 1.1em;
+    color: #444;
+    line-height: 1.4;
+}

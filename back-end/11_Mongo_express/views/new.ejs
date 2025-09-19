@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>New Chat</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #ece5dd;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .chat-form {
+      background: white;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+      width: 320px;
+    }
+
+    h2 {
+      text-align: center;
+      color: #075e54;
+      margin-bottom: 20px;
+      font-size: 20px;
+      letter-spacing: 1px;
+    }
+
+    input,
+    textarea,
+    button {
+      width: 100%;
+      margin: 8px 0;
+      padding: 10px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      font-size: 14px;
+      outline: none;
+      transition: border 0.2s ease;
+    }
+
+    input:focus,
+    textarea:focus {
+      border: 1px solid #25d366;
+    }
+
+    textarea {
+      resize: none;
+      height: 80px;
+    }
+
+    button {
+      background-color: #25d366;
+      color: white;
+      border: none;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #1ebe57;
+    }
+
+    /* Back button */
+    .back-btn {
+      display: inline-block;
+      margin-top: 10px;
+      text-align: center;
+      width: 100%;
+      padding: 8px;
+      background-color: #34b7f1;
+      color: white;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background 0.3s ease;
+    }
+
+    .back-btn:hover {
+      background-color: #2196d9;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="chat-form">
+    <h2>NEW CHAT</h2>
+    <form method="POST" action="/chats">
+      <input type="text" placeholder="Who are you?" name="from" value="<%= typeof from !== 'undefined' ? from : '' %>" required />
+      <textarea name="msg" placeholder="Write your message here..." required><%= typeof msg !== 'undefined' ? msg : '' %></textarea>
+      <input type="text" placeholder="Add Receiver" name="to" value="<%= typeof to !== 'undefined' ? to : '' %>" required />
+      <button type="submit">Create Chat</button>
+    </form>
+
+    <!-- Back to home button -->
+    <a href="/chats" class="back-btn">⬅ Back to Chats</a>
+  </div>
+</body>
+
+</html>

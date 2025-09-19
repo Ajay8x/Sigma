@@ -1,0 +1,76 @@
+/* General body styling */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #ece5dd;
+    margin: 0;
+    padding: 20px;
+}
+
+/* Page header */
+h3 {
+    text-align: center;
+    background-color: #075e54;
+    color: white;
+    padding: 12px;
+    border-radius: 8px;
+}
+
+/* New Chat button */
+button {
+    background-color: #25d366;
+    color: white;
+    padding: 8px 14px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+button:hover {
+    background-color: #1ebe57;
+}
+
+/* Chat box styling */
+.chat {
+    background: white;
+    border-radius: 12px;
+    padding: 15px;
+    margin: 15px auto;
+    max-width: 500px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Message bubble */
+.msg {
+    background: #dcf8c6;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 10px 0;
+}
+
+/* Delete button */
+.Delete button {
+    background-color: #ff4d4d;
+    margin-top: 10px;
+}
+
+.Delete button:hover {
+    background-color: #d93636;
+}
+
+/* Edit button */
+.msg form button {
+    background-color: #34b7f1;
+    margin-top: 5px;
+}
+
+.msg form button:hover {
+    background-color: #2196d9;
+}
+
+/* Date & Time text */
+.chat p {
+    margin: 5px 0;
+    font-size: 14px;
+    color: #333;
+}
