@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Home - Buy-Sell-X</title>
+  <style>
+    /* Basic Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Arial, sans-serif;
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: linear-gradient(135deg, #74ebd5, #ACB6E5, #a18cd1);
+      color: #2c3e50;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .container {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 40px 60px;
+      border-radius: 15px;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+      animation: fadeIn 1.5s ease-in-out;
+    }
+
+    h1 {
+      font-size: 3.2rem;
+      margin-bottom: 15px;
+      color: #fff;
+      text-shadow: 2px 2px 6px rgba(0,0,0,0.4);
+    }
+
+    p {
+      font-size: 1.1rem;
+      margin-bottom: 30px;
+      color: #f1f1f1;
+      line-height: 1.6;
+    }
+
+    a {
+      text-decoration: none;
+      background: linear-gradient(45deg, #3498db, #8e44ad);
+      color: #fff;
+      padding: 14px 30px;
+      border-radius: 10px;
+      font-size: 1.2rem;
+      font-weight: bold;
+      letter-spacing: 1px;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      display: inline-block;
+    }
+
+    a:hover {
+      background: linear-gradient(45deg, #2980b9, #6c3483);
+      transform: scale(1.07);
+      box-shadow: 0 6px 14px rgba(0,0,0,0.3);
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Welcome to Buy-Sell-X</h1>
+    <p>
+      Your trusted online marketplace to buy, sell, and discover amazing products.  
+      From gadgets and fashion to services and daily essentials – we connect buyers 
+      and sellers in one powerful platform. Start exploring now and find exactly what you need!
+    </p>
+    <a href="/listings"> Explore Website</a>
+  </div>
+</body>
+</html>
