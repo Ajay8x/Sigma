@@ -8,6 +8,7 @@ const methodOverride = require('method-override');
 const engine = require('ejs-mate');
 const wrapAsync = require('./utils/wrapAsync.js');
 const ExpressError = require('./utils/ExpressError.js');
+const { listingSchema } = require('./schema.js');
 
 
 // MongoDB connection
@@ -45,10 +46,17 @@ app.get("/", (req, res) => {
     console.log("Home page rendered successfully");
 });
 
+// Validation Middleware
 
-
-
-
+const validateListing = (req, res, next) => {
+    const { error } = listingSchema.validate(req.body);
+    if (error) {
+        const errMsg = error.details.map(el => el.message).join(", ");
+        throw new ExpressError(400, errMsg);
+    } else {
+        next();
+    }
+};
 
 
 
@@ -66,6 +74,8 @@ app.get('/listings/new', (req, res) => {
     console.log("New listing form rendered successfully");
 });
 
+
+
 // Show Listing by ID
 app.get('/listings/:id', wrapAsync(async (req, res) => {
     const { id } = req.params;
@@ -77,13 +87,21 @@ app.get('/listings/:id', wrapAsync(async (req, res) => {
     console.log("Listing details page rendered successfully");
 }));
 
+
+
+
 // Create Listing
-app.post('/listings', wrapAsync(async (req, res) => {
+app.post('/listings', validateListing, wrapAsync(async (req, res) => {
     const newListing = new Listing(req.body.listing);
     await newListing.save();
     res.redirect(`/listings/${newListing._id}`);
     console.log("New listing created successfully");
 }));
+
+
+
+
+
 
 // Edit Form
 app.get('/listings/:id/edit', wrapAsync(async (req, res) => {
@@ -97,7 +115,7 @@ app.get('/listings/:id/edit', wrapAsync(async (req, res) => {
 }));
 
 // Update Listing
-app.put('/listings/:id', wrapAsync(async (req, res) => {
+app.put('/listings/:id', validateListing, wrapAsync(async (req, res) => {
     const { id } = req.params;
     const updatedListing = await Listing.findByIdAndUpdate(
         id,
@@ -125,27 +143,28 @@ app.delete('/listings/:id', wrapAsync(async (req, res) => {
 
 
 
-
-
-
-
-
-
-
-
-
 ///// error handling /////
 
 // 404 handler
 app.use((req, res, next) => {
-   next(new ExpressError(404, "Page Not Found"));
+    next(new ExpressError(404, "Page Not Found"));
 });
+
+// Favicon route to prevent unnecessary 404 errors
+
+// app.get('/favicon.ico', (req, res) => res.status(204).end());
+
+
+
+
+
 
 // General error handler    
 app.use((err, req, res, next) => {
-   const { statusCode = 500, message = "Something went wrong" } = err;
-   res.status(statusCode).send(message);
-   console.error(err);
+    const { statusCode = 500, message = "Something went wrong" } = err;
+    //    res.status(statusCode).send(message);
+    res.render("error.ejs", { err });
+    console.error(err);
 });
 
 

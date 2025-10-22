@@ -4,13 +4,10 @@ const Schema = mongoose.Schema;
 const listingSchema = new Schema({
   title: {
     type: String,
-    required: [true, "Title is required"],
-    trim: true,
+    required: true,
   },
   description: {
     type: String,
-    trim: true,
-    default: "No description provided",
   },
   image: {
     type: String,
@@ -19,20 +16,14 @@ const listingSchema = new Schema({
   },
   price: {
     type: Number,
-    min: [0, "Price cannot be negative"],
-    default: 0,
   },
   location: {
     type: String,
-    trim: true,
-    default: "Unknown location",
   },
   country: {
     type: String,
-    trim: true,
-    default: "Unknown country",
   },
-}, { timestamps: true });
+}, );
 
 const Listing = mongoose.model("Listing", listingSchema);
 module.exports = Listing;
