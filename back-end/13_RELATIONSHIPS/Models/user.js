@@ -16,7 +16,7 @@ async function main() {
   const userSchema = new Schema({
     username: String,
     addresses: [
-      { _id: false,
+      { _id: false,      
         location: String,
         city: String,
       },

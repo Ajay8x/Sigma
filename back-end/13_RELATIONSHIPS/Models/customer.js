@@ -25,50 +25,113 @@ async function main() {
     ],
   });
 
+
+  // Middleware for delete operation Pre , post
+
+// customerSchema.pre('findOneAndDelete', async() => {
+//   console.log(' pre Middleware triggered for findOneAndDelete');
+// });
+
+
+customerSchema.post('findOneAndDelete', async(customer) => {
+ if(customer.orders.length){
+let result = await Order.deleteMany({_id: {$in: customer.orders}});
+console.log('✅ Deleted associated orders:', result);
+
+
+ }  
+});
+
+
+
+
   // Create model
   const Order = mongoose.model('Order', orderSchema);
   const Customer = mongoose.model('Customer', customerSchema);
 
+  // Add customer with orders
   const addCustomer = async () => {
-    // Fetch existing orders or create them
-    // let order1 = await Order.findOne({ item: 'samosa' });
-    // let order2 = await Order.findOne({ item: 'egg' });
+    // Create order
+    let newOrder = new Order({
+      item: "pasta",
+      price: 1000,
+    });
+    await newOrder.save();
 
-    // if (!order1 || !order2) {
-    //   console.log('⚠️ Orders not found! Please insert "samosa" and "egg" orders first.');
-    //   return;
-    // }
+    // Create customer and link order
+    let newCust = new Customer({
+      name: "Karan Arjun",
+      orders: [newOrder._id],
+    });
+    let savedCust = await newCust.save();
 
-    // const customer = new Customer({
-    //   name: 'John Doe',
-    // });
-
-    // customer.orders.push(order1._id);
-    // customer.orders.push(order2._id);
-
-    // const result = await customer.save();
-    // console.log('✅ Customer added:', result);
-
-    let result=await Customer.find({}).populate('orders');
-    console.log('✅ Customers found:', result[0]);
+    console.log("✅ Customer added:", savedCust);
   };
 
-  await addCustomer();
+
+// Delete customer by ID
+  const delCustomer = async () => {
+    let data = await Customer.findByIdAndDelete("68fdf7e667aa26689d69f1c6");
+    console.log("✅ Customer deleted:", data);
+  };
+
+
+  // Fetch and populate customers
+  const showCustomers = async () => {
+    let result = await Customer.find({}).populate('orders');
+    console.log('✅ Customers found:', JSON.stringify(result, null, 2));
+  };
+
+  // Call functions
+
+ // await addCustomer();
+   await delCustomer();
+
+   await showCustomers();
+
+
 }
 
 
-        // Add orders
-        //   const addOrders = async () => {
-        //     const orders = [
-        //       { item: 'samosa', price: 10 },
-        //       { item: 'egg', price: 140 },
-        //       { item: 'chips', price: 41 },
-        //     ];
 
-        //     const result = await Order.insertMany(orders);
-        //     console.log('✅ Orders added:', result);
-        //   };
 
-        //   // Call function
-        //   await addOrders();
-        
+// Fetch existing orders or create them
+// let order1 = await Order.findOne({ item: 'samosa' });
+// let order2 = await Order.findOne({ item: 'egg' });
+
+// if (!order1 || !order2) {
+//   console.log('⚠️ Orders not found! Please insert "samosa" and "egg" orders first.');
+//   return;
+// }
+
+// const customer = new Customer({
+//   name: 'John Doe',
+// });
+
+// customer.orders.push(order1._id);
+// customer.orders.push(order2._id);
+
+// const result = await customer.save();
+// console.log('✅ Customer added:', result);
+
+
+
+
+
+
+
+
+// Add orders
+//   const addOrders = async () => {
+//     const orders = [
+//       { item: 'samosa', price: 10 },
+//       { item: 'egg', price: 140 },
+//       { item: 'chips', price: 41 },
+//     ];
+
+//     const result = await Order.insertMany(orders);
+//     console.log('✅ Orders added:', result);
+//   };
+
+//   // Call function
+//   await addOrders();
