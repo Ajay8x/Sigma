@@ -1,5 +1,6 @@
   
 const Listing = require('./models/listing.js');
+const Review = require('./models/review.js');
 const ExpressError = require('./utils/ExpressError.js');
 const { listingSchema,reviewSchema } = require('./schema.js');
 
@@ -19,6 +20,8 @@ const { listingSchema,reviewSchema } = require('./schema.js');
     } 
     next();
 }
+
+
 // Middleware to save redirect URL to res.locals
 module.exports.saveRedirectUrl = (req, res, next) => {
   if (req.session.redirectUrl) {
@@ -30,7 +33,7 @@ module.exports.saveRedirectUrl = (req, res, next) => {
   next();
 }
 
-// Middleware to clear redirect URL from session after redirecting
+// listing Middleware to clear redirect URL from session after redirecting
 
 module.exports.isOwner = async (req, res, next) => {
   const { id } = req.params;
@@ -67,3 +70,16 @@ module.exports.validateReview = (req, res, next) => {
     }
 };
 
+
+
+//  Middleware to clear redirect URL from session after redirecting
+
+module.exports.isReviewAuthor= async (req, res, next) => {
+  const {id, reviewId } = req.params;
+  const review = await Review.findById(reviewId);
+  if (!review.author.equals(req.user._id)) {
+      req.flash('error', 'You are not the owner, so you cannot perform this action.');
+      return res.redirect(`/listings/${id}`);
+  } 
+      next();
+};
