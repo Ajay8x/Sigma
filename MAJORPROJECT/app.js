@@ -5,10 +5,17 @@ const path = require('path');
 const methodOverride = require('method-override');
 const ejsMate = require('ejs-mate');
 const ExpressError = require('./utils/ExpressError.js');
+const session = require('express-session');
+const flash = require('connect-flash');
+const passport = require('passport');
+const LocalStrategy = require('passport-local');
+const User = require('./models/user.js');
 
-// Routes
-const listings = require('./routes/listing.js');
-const reviews = require('./routes/review.js');
+// Routes imports
+const listingsRouter = require('./routes/listing.js');
+const reviewsRouter = require('./routes/review.js');
+const userRouter = require('./routes/user.js');
+
 
 // MongoDB connection
 const MONGO_URI = 'mongodb://localhost:27017/wanderlust';
@@ -28,17 +35,93 @@ app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride('_method'));
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Routes
+
+ 
+
+
+const sessionOptions = {
+  secret:"mysecretcode",
+  resave:false,
+  saveUninitialized:true,
+  cookie:{
+    httpOnly:true,
+    expires: Date.now() + 1000 * 60 * 60 * 24 * 7, // 1 week
+    maxAge: 1000 * 60 * 60 * 24 * 7,
+    httpOnly: true,
+  },
+};
+
+
+// Routes /
 app.get('/', (req, res) => {
   res.render('home');
   console.log('🏠 Home page rendered successfully');
 });
 
-// Listings routes
-app.use('/listings', listings);
 
-// ✅ Ensure this matches your review form action
-app.use('/listings/:id/reviews', reviews);
+app.use(session(sessionOptions));
+app.use(flash());
+
+
+
+// Passport Configuration
+app.use(passport.initialize());
+app.use(passport.session());
+passport.use(new LocalStrategy(User.authenticate()));
+
+
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
+
+
+
+
+
+
+
+// Flash Middleware 
+app.use((req, res, next) => {
+  res.locals.success=req.flash('success');
+  res.locals.error=req.flash('error');
+  res.locals.currUser=req.user;
+ 
+  next();
+});
+
+app.get('/demouser', async (req, res) => {
+  try {
+    let user = new User({
+      username: "delta-student",
+      email: "student@gmail.com"
+    });
+
+    let registeredUser = await User.register(user, "helloworld");
+    res.send(registeredUser);
+    
+  } catch (err) {
+    console.log(err);
+    res.status(500).send("Error: " + err.message);
+  }
+});
+
+
+
+
+
+
+
+
+
+
+
+//use route 
+
+// Listings routes
+app.use('/listings', listingsRouter);
+// Reviews routes
+app.use('/listings/:id/reviews', reviewsRouter);
+//user routes
+app.use('/', userRouter);
 
 
 

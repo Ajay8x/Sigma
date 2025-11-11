@@ -29,6 +29,10 @@ const listingSchema = new Schema({
       ref: "Review", // ✅ Proper reference
     },
   ],
+  owner: {
+    type: Schema.Types.ObjectId,
+    ref: "User",
+  },
 });
 
 // ✅ Mongoose middleware: Delete all associated reviews when a listing is deleted

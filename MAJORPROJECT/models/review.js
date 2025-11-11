@@ -1,5 +1,6 @@
 
 const mongoose = require("mongoose");
+const { authorize } = require("passport");
 
 const Schema = mongoose.Schema; 
 const reviewSchema = new Schema({
@@ -13,5 +14,8 @@ const reviewSchema = new Schema({
         type: Date,
         default: Date.now()
 
-    }});
+    },
+
+ 
+});
     module.exports = mongoose.model("Review", reviewSchema);
