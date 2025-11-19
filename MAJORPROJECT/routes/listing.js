@@ -1,3 +1,12 @@
+
+if (process.env.NODE_ENV !== "production"){
+    require('dotenv').config();
+}
+
+
+
+// console.log(process.env);
+
 const express = require('express');
 const router = express.Router();
 const wrapAsync = require('../utils/wrapAsync.js');
@@ -9,12 +18,28 @@ const listingController = require('../controllers/listings.js');
 
 
 
+
+const multer  = require('multer')
+const { storage } = require('../cloudConfig.js');
+const fs = require("fs");
+const upload = multer({ storage  })
+
+
+
+
+
+
+
+
 router
     .route("/")  
        .get(wrapAsync(listingController.index))// All index Listings
-       .post(isLoggedIn,validateListing, wrapAsync(listingController.createListing));// Create Listing
+       .post(isLoggedIn,
+        upload.single('listing[image]'),
+        validateListing,
+         wrapAsync(listingController.createListing));// Create Listing
 
-  
+
 
 
 
@@ -29,7 +54,7 @@ router.get('/new', isLoggedIn, listingController.renderNewForm);// New Listing F
 router
     .route("/:id")
     .get(wrapAsync(listingController.showListing))// Show Listing by ID (with populated reviews)
-    .put(isLoggedIn, isOwner, validateListing, wrapAsync(listingController.updateListing))// Update Listing
+    .put(isLoggedIn, isOwner,upload.single('listing[image]'), validateListing, wrapAsync(listingController.updateListing))// Update Listing
     .delete(isLoggedIn, isOwner, wrapAsync(listingController.destroyListing));// Delete Listing
 
 

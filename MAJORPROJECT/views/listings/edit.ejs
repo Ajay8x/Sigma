@@ -6,11 +6,9 @@
             <body>
                 <h3>Edit your Listing</h3>
                 
-                    <img src="<%= listing.image %>" alt="Listing Image" style="max-width:300px; margin-bottom: 20px;"
-                        class="form-control" />
+                   
 
-
-                <form method="POST" action="/listings/<%= listing._id %>?_method=PUT"   class="needs-validation" novalidate>
+                <form method="POST" action="/listings/<%= listing._id %>?_method=PUT"   class="needs-validation" novalidate enctype="multipart/form-data">
                     <div class="mb-3"> <label for="title" class="form-leble">
                          Title
                         </label>
@@ -33,13 +31,16 @@
               Please Enter Valid Short Description
             </div>
                     </div>
-                    <br><br>
-                    <div class="mb-3"><label for="image" class="form-leble">Image URL</label>
-                        <input type="text" name="listing[image]" value="<%= listing.image %>"
-                            placeholder="Enter image URL" class="form-control"  required />
-                             <div class="invalid-feedback"> 
-              Please Enter valid IMG URL
-            </div>
+
+                      <h3>org img</h3>
+                    <br><br> <img src="<%= listing.image.url %>" alt="Listing Image" 
+                        class="form-control" />
+
+  <br><br>
+                    <div class="mb-3"><label for="image" class="form-leble"> Upload New Image </label>
+                        <input type="file" name="listing[image]" 
+                           class="form-control" />
+                            
                     </div>
 
                     <br><br>
