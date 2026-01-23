@@ -6,6 +6,7 @@ const methodOverride = require('method-override');
 const ejsMate = require('ejs-mate');
 const ExpressError = require('./utils/ExpressError.js');
 const session = require('express-session');
+const MongoStore = require('connect-mongo');
 const flash = require('connect-flash');
 const passport = require('passport');
 const LocalStrategy = require('passport-local');
@@ -15,16 +16,18 @@ const User = require('./models/user.js');
 const listingsRouter = require('./routes/listing.js');
 const reviewsRouter = require('./routes/review.js');
 const userRouter = require('./routes/user.js');
+const { error } = require('console');
 
 
 // MongoDB connection
-const MONGO_URI = 'mongodb://localhost:27017/wanderlust';
+//const MONGO_URI = 'mongodb://localhost:27017/wanderlust';
+const dbUrl=process.env.ATLASDB_URL;
 main()
   .then(() => console.log('✅ Connected to MongoDB'))
   .catch(err => console.log(err));
 
 async function main() {
-  await mongoose.connect(MONGO_URI);
+  await mongoose.connect(dbUrl);
 }
 
 // Middleware
@@ -37,28 +40,41 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 
  
+const store = MongoStore.create({
+  mongoUrl: dbUrl,
+  collectionName: "sessions",
+  ttl: 14 * 24 * 60 * 60  // 14 days
+});
+
+
+
+store.on("error", (err) => {
+  console.log("SESSION STORE ERROR", err);
+});
 
 
 const sessionOptions = {
-  secret:"mysecretcode",
-  resave:false,
-  saveUninitialized:true,
-  cookie:{
-    httpOnly:true,
-    expires: Date.now() + 1000 * 60 * 60 * 24 * 7, // 1 week
-    maxAge: 1000 * 60 * 60 * 24 * 7,
+  store,
+  secret: process.env.SECRET,
+  resave: false,
+  saveUninitialized: false,   // 🔥 MUST BE FALSE
+  cookie: {
     httpOnly: true,
+    maxAge: 1000 * 60 * 60 * 24 * 7,
+    expires: new Date(Date.now() + 1000 * 60 * 60 * 24 * 7),
   },
 };
 
 
-// Routes /
-app.get('/', (req, res) => {
-  res.render('home');
-  console.log('🏠 Home page rendered successfully');
-});
+
+// // Routes /
+// app.get('/', (req, res) => {
+//   res.render('home');
+//   console.log('🏠 Home page rendered successfully');
+// });
 
 
+// Session Configuration
 app.use(session(sessionOptions));
 app.use(flash());
 

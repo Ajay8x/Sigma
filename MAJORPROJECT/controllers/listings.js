@@ -2,18 +2,29 @@ const Listing = require("../models/listing");
 
 
 
-//index all listing 
-module.exports.index = async (req, res) => {
+
+
+
+
+// INDEX — Show all listings
+module.exports.index = async (req, res, next) => {
   try {
     const allListings = await Listing.find({});
-    res.render("listings/index.ejs", { listings: allListings });
+
     console.log("✅ All listings page rendered successfully");
-  }
-   catch (error) {
+
+    return res.render("listings/index.ejs", {
+      layout: "layouts/boilerplate",
+      listings: allListings || []
+    });
+
+  } catch (error) {
     console.error("❌ Error fetching listings:", error);
-    res.status(500).send("Server Error: Unable to fetch listings");
+    next(error);  // 👈 Correct way to pass error to Express handler
   }
 };
+
+
 
 
 //new form get
