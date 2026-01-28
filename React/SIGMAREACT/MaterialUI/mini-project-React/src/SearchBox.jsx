@@ -16,8 +16,11 @@ export default function SearchBox({ updateInfo }) {
 
     let [city, setCity] = useState("mirzapur");
     let [error, setError] = useState(false);
-    const API_URL = "https://api.openweathermap.org/data/2.5/forecast";
-    const API_KEY = "f4d4f4928815879a3f757eb82a3c08d4"
+
+    const API_URL = import.meta.env.VITE_API_URL;
+const API_KEY = import.meta.env.VITE_API_KEY;
+
+
 
     let getWeatherInfo = async () => {
         try {
