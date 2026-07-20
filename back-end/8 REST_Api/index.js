@@ -32,10 +32,13 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 
 
+
+
 // Route to render the form
 app.listen(port, () => {
     console.log(`Server is running on http://localhost:${port}`);
 });
+
 
 
 // array to store posts
@@ -58,15 +61,12 @@ let posts = [
     }
 ];
 
-// Route to display all posts
+
+// Show all posts
 app.get('/posts', (req, res) => {
-    res.render("index.ejs", { posts });
+    res.render('index.ejs', { posts });
 });
 
-// route show create  new post
-app.get("/posts/new", (req, res) => {
-    res.render("new.ejs");
-});
 
 // Route to handle form submission and create a new post
 app.post('/posts', (req, res) => {

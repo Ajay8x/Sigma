@@ -20,7 +20,7 @@ const connection = mysql.createConnection({
     host: 'localhost',
     user: 'root',
     database: 'delta_app',
-    password: 'Ajay123@'
+    password: '123456'
 });
 
 app.listen(3000, () => {
